@@ -8,4 +8,4 @@ logs/
 .vscode/settings.json
 
 # Windsurf user-specific settings
-.windsurf/settings.json
+ .windsurf/settings.json
