@@ -2,34 +2,61 @@ version: 2
 
 models:
   - name: stg_jaffle_shop__customers
-    description: Staged customer data from our jaffle shop app.
+    description: Welcome to the stg_jaffle_shop__customers model, the ultimate gossip hub of the Jaffle Shop app! Here, we've got the scoop on all our customers, from their IDs (the secret code names we use to talk about them when they're not listening), to their first and last names (because we believe in the power of a name). So, come on in, pull up a chair, and get to know our customers a little better!
     columns:
       - name: customer_id
-        description: The primary key for customers.
+        description: This is a unique identifier assigned to each customer. It is used to track individual customer's orders, preferences, and other interactions with the shop. This information can be used to understand customer behavior and preferences, enabling personalized marketing and improved customer service.
         tests:
-          - unique
           - not_null
+          - unique
+        data_type: string
+      - name: first_name
+        description: This column is the 'Hello, my name is...' of our database. It contains the first name of our customers, because everyone deserves to be on a first-name basis with their coffee shop. It's a string data type, extracted from the raw.jaffle_shop.customers table. Use it wisely to add a personal touch to your customer interactions, because nothing says 'we care' like remembering someone's name!
+        data_type: string
+        quote: true
+      - name: last_name
+        description: This column is the 'surname' of the game, the 'family name' of the party, the 'last piece of the puzzle' in identifying our customers. It's the secret ingredient in the recipe of personalization. Use it wisely, and remember, with great power comes great responsibility!
+        data_type: string
+        quote: true
 
   - name: stg_jaffle_shop__orders
-    description: Staged order ata from our jaffle shop app.
+    description: The stg_jaffle_shop__orders model is a staging model that contains all the order data from our Jaffle Shop app. It includes key information such as the order ID, the status of the order, and the customer ID. This model is crucial for understanding customer behavior and order patterns, which can inform business decisions such as marketing strategies, inventory management, and customer relationship management.
     columns:
       - name: order_id
-        description: Primary key for orders.
+        description: This is the unique identifier for each order placed in the Jaffle Shop. It is crucial for tracking individual orders, understanding order patterns, and making informed business decisions.
         tests:
-          - unique
           - not_null
+          - unique
       - name: status
-        description: '{{ doc("order_status") }}'
+        description: "This column indicates the current status of an order. It can have one of the following values: 'placed' (order placed, not yet shipped), 'shipped' (order has been shipped, not yet been delivered), 'completed' (order has been received by customers), 'return pending' (customer indicated they want to return this item), 'returned' (item has been returned). This information is crucial for tracking the progress of an order and managing customer expectations.
+
+
+          One of the following values:\ 
+
+
+          | status         | definition                                       |
+
+          |----------------|--------------------------------------------------|
+
+          | placed         | Order placed, not yet shipped                    |
+
+          | shipped        | Order has been shipped, not yet been delivered   |
+
+          | completed      | Order has been received by customers             |
+
+          | return pending | Customer indicated they want to return this item |
+
+          | returned       | Item has been returned"
         tests:
           - accepted_values:
               values:
                 - completed
-                - shipped
-                - returned
-                - return_pending
                 - placed
+                - return_pending
+                - returned
+                - shipped
       - name: customer_id
-        description: Foreign key to sgt_customers.customer_id.
+        description: This column represents the unique identifier for each customer who has placed an order. It is crucial for linking orders to specific customers, enabling analysis of customer behavior, order patterns, and customer segmentation.
         tests:
           - relationships:
               field: customer_id

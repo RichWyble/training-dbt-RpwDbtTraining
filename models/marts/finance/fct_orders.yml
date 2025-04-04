@@ -1,0 +1,30 @@
+models:
+  - name: fct_orders
+    description: "The fct_orders model is a fact table that contains information about orders placed by customers. It is derived from the stg_jaffle_shop__orders and stg_stripe__payments staging tables. The model includes the following columns: ORDER_ID, CUSTOMER_ID, ORDER_DATE, and AMOUNT. The ORDER_ID is a unique identifier for each order. The CUSTOMER_ID is a unique identifier for each customer. The ORDER_DATE is the date when the order was placed. The AMOUNT is the total amount paid for the order, which is calculated as the sum of the amounts of successful payments associated with the order."
+    columns:
+      - name: order_id
+        description: Unique identifier for each order. This is a numeric field.
+        data_type: number
+        data_tests:
+          - unique
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 1
+              max_value: 99
+      - name: customer_id
+        description: Unique identifier for each customer. This is a numeric field.
+        data_type: number
+        data_tests:
+          - dbt_utils.accepted_range:
+              min_value: 1
+              max_value: 99
+      - name: order_date
+        description: The date when the order was placed. This is a date field.
+        data_type: date
+      - name: amount
+        description: The total amount of successful payments for each order. If there are no successful payments, the amount is 0.
+        data_type: number
+        data_tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 58

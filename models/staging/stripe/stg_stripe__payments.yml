@@ -1,0 +1,22 @@
+models:
+  - name: stg_stripe__payments
+    description: The stg_stripe__payments model is like a magician's hat, transforming the raw.stripe.payment source into something far more exciting. It's like a game of musical chairs, where 'id' becomes 'payment_id', 'orderid' becomes 'order_id', and 'paymentmethod' becomes 'payment_method'. The 'amount' column, feeling a bit heavy, decides to shed some weight by dividing itself by 100. And 'created', wanting to sound a bit more sophisticated, rebrands itself as 'created_at'.
+    columns:
+      - name: payment_id
+        description: The unique identifier for each payment transaction. It's like the fingerprint of a payment, no two are the same!
+        data_type: number
+      - name: order_id
+        description: The unique identifier for each order. It's like the social security number for your shopping cart, but less controversial.
+        data_type: number
+      - name: payment_method
+        description: This column is the life of the party, always showing up with a different costume. It tells us how the payment was made. Could be credit, debit, or even magic beans!
+        data_type: varchar
+      - name: payment_status
+        description: This column is like a fortune teller, it tells you whether your payment has 'succeeded', is 'pending', or has 'failed'. It's the crystal ball of your financial transactions.
+        data_type: varchar
+      - name: payment_amount
+        description: This is where the magic happens! The PAYMENT_AMOUNT column is the diva of the stg_stripe__payments model. It's the original payment amount, but with a twist - it's divided by 100 to strut its stuff in a more digestible decimal format. So, if you're looking for the star of the show, you've found it!
+        data_type: number
+      - name: created_at
+        description: This column represents the date and time when the payment was made. It is recorded in Coordinated Universal Time (UTC). This information can be useful for tracking payment trends over time, identifying peak periods of sales, and informing business decisions related to sales and revenue forecasting.
+        data_type: date

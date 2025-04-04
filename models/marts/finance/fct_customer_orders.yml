@@ -1,0 +1,34 @@
+models:
+  - name: fct_customer_orders
+    description: The fct_customer_orders model is a comprehensive view of customer orders, payments, and order history. It includes details such as customer name, order dates, order status, payment status, and calculated fields like total lifetime value, average non-returned order value, and order count. The model also handles cases where orders are returned or pending, and excludes failed payments. The data is sourced from the raw.jaffle_shop.customers, raw.jaffle_shop.orders, and raw.stripe.payment tables.
+    columns:
+      - name: order_id
+        description: Unique identifier for each order placed by a customer.
+        data_type: number
+      - name: customer_id
+        description: A unique identifier for each customer. This is a numeric field and is used to link the customer's orders and payment details.
+        data_type: number
+      - name: surname
+        description: The last name of the customer
+        data_type: varchar
+      - name: givenname
+        description: The first name of the customer.
+        data_type: varchar
+      - name: first_order_date
+        description: The date of the customer's first order. This is calculated as the earliest order_date from the orders table for each customer.
+        data_type: date
+      - name: order_count
+        description: This column represents the total number of orders placed by a customer. It is calculated by counting the number of unique orders made by each customer, excluding any orders that are pending or have been returned.
+        data_type: number
+      - name: total_lifetime_value
+        description: This column represents the total value of all orders placed by a customer, excluding any orders that have been returned or are pending return. The value is calculated by summing the amounts of all non-returned orders, with each amount being rounded to two decimal places. The value is expressed in dollars.
+        data_type: number
+      - name: order_value_dollars
+        description: This column represents the total value of an order in dollars. It is calculated by rounding the 'amount' field from the 'payments' table divided by 100.0 to 2 decimal places. This field is populated for all orders, regardless of their status, except for those with a 'fail' status in the 'payments' table.
+        data_type: number
+      - name: order_status
+        description: This column represents the status of the order. It indicates whether the order is pending, returned, return pending, or any other status.
+        data_type: varchar
+      - name: payment_status
+        description: This column represents the status of the payment for each order. It indicates whether the payment was successful, failed, or is still pending.
+        data_type: varchar

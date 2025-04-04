@@ -1,0 +1,25 @@
+models:
+  - name: dim_customers
+    description: Meet 'dim_customers', the social butterfly of our database. It's the life of the party, bringing together the 'stg_jaffle_shop__customers' and the 'fct_orders' tables for a grand soirée. It's got all the juicy gossip - who's who (customer_id), their secret aliases (first_name, last_name), their first appearance (first_order_date), their latest escapade (most_recent_order_date), their popularity score (number_of_orders), and their net worth (lifetime_value). And if someone's a wallflower with no orders? No worries, 'dim_customers' is kind enough to give them a score of zero. Now, isn't that a model worth knowing?
+    columns:
+      - name: customer_id
+        description: This is a unique identifier for each customer. It is used to distinguish individual customers and is crucial for joining customer data with their respective orders. This information is essential for understanding customer behavior, tracking individual customer's order history, and calculating their lifetime value.
+        data_type: number
+      - name: first_name
+        description: The first name of the customer. It's the name that makes the customer feel special when we say, 'Hey, [First Name], your order is ready!'
+        data_type: varchar
+      - name: last_name
+        description: The 'LAST_NAME' column represents the last name of the customer. This information is sourced directly from the customers table. It is useful for personalizing communication with the customer and for identifying specific customers in customer service scenarios.
+        data_type: varchar
+      - name: first_order_date
+        description: The date when the customer first fell in love with our products and decided to make it official. It's like the first date in a romantic relationship, but with less awkwardness and more shopping.
+        data_type: date
+      - name: most_recent_order_date
+        description: This is the date when the customer last decided to splurge on our products. It's like the last time they said 'treat yo self' and we were there to help!
+        data_type: date
+      - name: number_of_orders
+        description: This column is the life of the party, counting the number of times a customer has hit the 'Order' button. It's like a personal diary of a customer's shopping spree!
+        data_type: number
+      - name: lifetime_value
+        description: This column is the 'show me the money' column. It's the total amount a customer has spent on orders, calculated by summing up the 'amount' field from the 'orders' table for each customer. It's like the customer's score in the game of shopping!
+        data_type: number
