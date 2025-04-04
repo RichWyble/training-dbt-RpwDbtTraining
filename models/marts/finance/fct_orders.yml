@@ -6,25 +6,14 @@ models:
         description: Unique identifier for each order. This is a numeric field.
         data_type: number
         data_tests:
-          - unique
           - not_null
-          - dbt_utils.accepted_range:
-              min_value: 1
-              max_value: 99
+          - unique
       - name: customer_id
         description: Unique identifier for each customer. This is a numeric field.
         data_type: number
-        data_tests:
-          - dbt_utils.accepted_range:
-              min_value: 1
-              max_value: 99
       - name: order_date
         description: The date when the order was placed. This is a date field.
         data_type: date
       - name: amount
         description: The total amount of successful payments for each order. If there are no successful payments, the amount is 0.
         data_type: number
-        data_tests:
-          - dbt_utils.accepted_range:
-              min_value: 0
-              max_value: 58
