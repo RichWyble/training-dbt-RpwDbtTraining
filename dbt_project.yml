@@ -1,25 +1,25 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: "jaffle_shop"
-version: "1.0.0"
-config-version: 2
+name: "jaffle_shop"  # The name of the dbt project
+version: "1.0.0"  # The version of the dbt project
+config-version: 2  # The version of the dbt configuration schema
 
 # This setting configures which "profile" dbt uses for this project.
-profile: "training-dbt-RpwDbtTraining"
+profile: "training-dbt-RpwDbtTraining"  # The profile to use for database connection settings
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
-model-paths: ["models"]
-analysis-paths: ["analyses"]
-test-paths: ["tests"]
-seed-paths: ["seeds"]
-macro-paths: ["macros"]
-snapshot-paths: ["snapshots"]
+model-paths: ["models"]  # Directory for model files
+analysis-paths: ["analyses"]  # Directory for analysis files
+test-paths: ["tests"]  # Directory for test files
+seed-paths: ["seeds"]  # Directory for seed files
+macro-paths: ["macros"]  # Directory for macro files
+snapshot-paths: ["snapshots"]  # Directory for snapshot files
 
-target-path: "target" # directory which will store compiled SQL files
-clean-targets: # directories to be removed by `dbt clean`
+target-path: "target"  # Directory which will store compiled SQL files
+clean-targets:  # Directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
@@ -34,8 +34,11 @@ clean-targets: # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  jaffle_shop:
-    staging:
-      +materialized: view
-    marts:
-      +materialized: table
+  jaffle_shop:  # Configuration for all models in the `jaffle_shop` project
+    +persist_docs:  # Persist metadata (descriptions) to the database
+        relation: true  # Persist descriptions for models (relations)
+        columns: true  # Persist descriptions for columns
+    staging:  # Configuration for models in the `staging` folder
+      +materialized: view  # Materialize models as views
+    marts:  # Configuration for models in the `marts` folder
+      +materialized: table  # Materialize models as tables
