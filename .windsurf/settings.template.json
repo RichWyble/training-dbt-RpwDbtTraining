@@ -1,0 +1,36 @@
+{
+  "python.defaultInterpreterPath": "~\\dbt-global-env\\Scripts\\python.exe",
+  "python.terminal.activateEnvironment": true,
+  
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "DBT Shell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell",
+      "args": [
+        "-NoExit", 
+        "-Command", 
+        "& {if (Test-Path '~\\dbt-global-env\\Scripts\\Activate.ps1') { & '~\\dbt-global-env\\Scripts\\Activate.ps1' } else { Write-Host 'Virtual environment not found' }; Set-Location '${workspaceFolder}'}"
+      ]
+    }
+  },
+  
+  "files.associations": {
+    "*.sql": "jinja-sql"
+  },
+  "sql.format.enable": true,
+  
+  "dbt.queryLimit": 500,
+  "dbt.enableNewLineagePanel": true,
+  "dbt.profilesDirOverride": "~/.dbt",
+  "dbt.projectDirOverride": "${workspaceFolder}",
+  "dbt.defaultProfile": "training-dbt-RpwDbtTraining",
+  "dbt.defaultTarget": "dev",
+  "dbt.enableLiveCompile": true,
+  "dbt.versionCheck": "neither",
+  "dbt.powerUserApiKey": "YOUR_API_KEY_HERE"
+}

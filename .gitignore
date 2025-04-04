@@ -3,4 +3,9 @@
 target/
 dbt_packages/
 logs/
-.vscode/
+
+# VS Code user-specific settings
+.vscode/settings.json
+
+# Windsurf user-specific settings
+.windsurf/settings.json
