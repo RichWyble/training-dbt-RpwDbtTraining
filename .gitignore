@@ -5,10 +5,10 @@ dbt_packages/
 logs/
 
 # VS Code user-specific settings
-training-dbt-RpwDbtTraining/.vscode/settings.json
+.vscode/settings.json
 .vscode/tasks.json
 ``
 # Windsurf user-specific settings
-training-dbt-RpwDbtTraining/.windsurf/settings.json
+.windsurf/settings.json
 #virtual environment
 activate_env.ps1
