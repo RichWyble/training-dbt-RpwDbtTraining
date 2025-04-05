@@ -6,6 +6,10 @@ logs/
 
 # VS Code user-specific settings
 .vscode/settings.json
-
+.vscode/tasks.json
+``
 # Windsurf user-specific settings
  .windsurf/settings.json
+
+#virtual environment
+activate_env.ps1
