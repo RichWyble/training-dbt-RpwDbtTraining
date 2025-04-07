@@ -1,1 +1,1 @@
-select * from {{ source("jaffle_shop", "orders") }}
+select * from {{ ref('stg_stripe__customers') }}
