@@ -33,5 +33,6 @@
   "dbt.enableLiveCompile": true,
   "dbt.versionCheck": "neither",
   "dbt.powerUserApiKey": "YOUR_API_KEY_HERE",
-  "dbt.instanceName": "YOUR_INSTANCE_NAME_HERE"
+  "dbt.instanceName": "YOUR_INSTANCE_NAME_HERE",
+  "dbt.previewLimit": 100
 }
