@@ -3,3 +3,7 @@
 target/
 dbt_packages/
 logs/
+.vscode/
+.windsurf/
+
+activate_env.ps1
